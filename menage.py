@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 
-from app import getApp
+from src.app import getApp
 from src.main.controllers.whatsappController import WhatsApp
 from src.main.entities.ChatBot import getChatBot
 from src.main.db.pgAdmin import MenagerDB
