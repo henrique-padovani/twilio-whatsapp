@@ -8,7 +8,14 @@ class MessageDB:
     def __init__(cls, menagerDB):
         cls.menagerDB = menagerDB
 
+    def deleteTable(self, menagerDB):
+        sql = "drop table message cascade"
+        menagerDB.cursor.execute(sql)
+        menagerDB.db.commit()
+        return
+
     def createTable(self, menagerDB):
+        self.deleteTable(self, menagerDB)
         sql = '''
                 CREATE TABLE MESSAGE (
                     ID UUID PRIMARY KEY,

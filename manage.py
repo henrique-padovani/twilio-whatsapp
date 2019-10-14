@@ -2,8 +2,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 
 from src.app import getApp
-from src.main.controllers.whatsappController import WhatsApp
-from src.main.controllers.noroute import NoRoute
+
 from src.main.entities.ChatBot import getChatBot
 from src.main.db.pgAdmin import MenagerDB
 from src.main.db.MessageDB import MessageDB
