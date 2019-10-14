@@ -3,4 +3,4 @@ flask
 flask_restful
 psycopg2
 uuid
-chatterbot.trainers
+chatterbot-corpus
