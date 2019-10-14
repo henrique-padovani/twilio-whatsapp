@@ -1,1 +1,1 @@
-web: py manage.py
+web: python manage.py
