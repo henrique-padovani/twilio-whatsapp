@@ -1,49 +1,35 @@
-# mongo.py
-
 from flask import Flask, jsonify, request
-from flask_pymongo import PyMongo
 from flask_restful import Resource, Api
 
-app = Flask(__name__)
-api = Api(app)
+from app import getApp
+from src.main.controllers.whatsappController import WhatsApp
+from src.main.entities.ChatBot import getChatBot
+from src.main.db.pgAdmin import MenagerDB
+from src.main.db.MessageDB import MessageDB
 
-dbName = 'TwilioTaskAppDB'
-app.config['MONGO_DBNAME'] = dbName
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/' + dbName
 
-app.url_map.strict_slashes = False # Disable redirecting on POST method from /star to /star/
+print("GLOBAL")
 
-mongo = PyMongo(app)
+def setUp():
+    print("\n\n\n INICIO")
 
-class Star(Resource):
-    def get(self, name):
-        star = mongo.db.stars
-        s = star.find_one({'name' : name})
-        if s:
-            output = {'name' : s['name'], 'distance' : s['distance']}
-        else:
-            output = "No such name"
-        return jsonify({'result' : output})
+    # chatbot = getChatBot('Teste')
+    menagerDB = MenagerDB('twiliodatabase')
 
-class StarList(Resource):
-    def get(self):
-        star = mongo.db.stars
-        output = []
-        for s in star.find():
-            output.append({'name' : s['name'], 'distance' : s['distance']})
-        return jsonify({'result' : output})
+    messageDB = MessageDB(menagerDB)
+    MessageDB.createTable(MessageDB, menagerDB)
+    MessageDB.saveMessage("mensagem skmsakm")
 
-    def post(self):
-        star = mongo.db.stars
-        name = request.json['name']
-        distance = request.json['distance']
-        star_id = star.insert({'name': name, 'distance': distance})
-        new_star = star.find_one({'_id': star_id })
-        output = {'name' : new_star['name'], 'distance' : new_star['distance']}
-        return jsonify({'result' : output})
+    print("\n\n\n FIM\n\n")
+    return
 
-api.add_resource(StarList, '/star')
-api.add_resource(Star, '/star/<string:name>')
+
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    print("\n\n\nmain inicio \n\n")
+    setUp()
+    app = getApp()
+
+    app.run(debug=True, use_reloader=False)
+    print("\n\n\nmain fim \n\n")
