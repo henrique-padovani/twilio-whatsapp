@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from src.main.controllers.whatsappController import WhatsApp
+from src.main.controllers.noroute import NoRoute
 
 def getApp():
     print("getApp + name:" + str(__name__))
@@ -9,6 +10,7 @@ def getApp():
     api = Api(app)
     
     api.add_resource(WhatsApp, '/whatsApp')
+    api.add_resource(NoRoute, '/')
     # app.run(debug=True)
     print("get app FIM")
     return app
