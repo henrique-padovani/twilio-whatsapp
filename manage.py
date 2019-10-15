@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
+from os import environ
 
 from src.app import getApp
 
@@ -31,5 +32,5 @@ if __name__ == '__main__':
     setUp()
     app = getApp()
 
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=environ.get('PORT'))
     print("\n\n\nmain fim \n\n")
