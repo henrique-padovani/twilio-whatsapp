@@ -15,16 +15,26 @@ class MessageDB:
         return
 
     def createTable(self, menagerDB):
-        self.deleteTable(self, menagerDB)
-        sql = '''
-                CREATE TABLE MESSAGE (
-                    ID UUID PRIMARY KEY,
-                    MESSAGE VARCHAR(1000) NOT NULL
-                )
-            '''
-        menagerDB.cursor.execute(sql)
-        menagerDB.db.commit()
+        bool_ = self.tableExists(self, menagerDB)
+        if bool_:
+            self.deleteTable(self, menagerDB)
+            sql = '''
+                    CREATE TABLE MESSAGE (
+                        ID UUID PRIMARY KEY,
+                        MESSAGE VARCHAR(1000) NOT NULL
+                    )
+                '''
+            menagerDB.cursor.execute(sql)
+            menagerDB.db.commit()
+            return
         return
+    
+    def tableExists(self, menagerDB):
+        sql = '''
+            select * from information_schema.tables where table_name='{}'"
+        '''
+        menagerDB.cursor.execute(sql.format('MESSAGE'))
+        return bool(menagerDB.cursor.rowcount)
 
     @classmethod
     def saveMessage(cls, message):
