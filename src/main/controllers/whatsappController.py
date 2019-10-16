@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flask_restful import Resource
 from src.main.db.MessageDB import MessageDB
-from src.main.entities.ChatBot import ChatBot
+from src.main.entities.ChatBot import Bot
 
 from twilio.rest import Client
 
@@ -17,7 +17,7 @@ class WhatsApp(Resource):
         to = message['From']
         
         client = Client(ACCOUNT_SID, AUTH_TOKEN)
-        msg = ChatBot.getBotResponse(body)
+        msg = Bot.getBotResponse(body)
         client.messages.create(body=msg, from_=mybot_whats, to=to)
 
         MessageDB.saveMessage(str(message))
