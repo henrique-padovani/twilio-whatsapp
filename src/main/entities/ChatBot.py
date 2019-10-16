@@ -11,7 +11,7 @@ class ChatBot:
     def getChatBot(cls, chatbotName):
         cls.bot = ChatBot()
         # Create a new trainer for the chatbot
-        trainer = ChatterBotCorpusTrainer(bot)
+        trainer = ChatterBotCorpusTrainer(cls.bot)
         # # Train the chatbot based on the english corpus
         trainer.train("chatterbot.corpus.english")
         # # Train based on english greetings corpus
