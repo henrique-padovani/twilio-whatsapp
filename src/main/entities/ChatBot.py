@@ -30,4 +30,4 @@ class ChatBot:
     @classmethod
     def getBotResponse(cls, message):
         resp = cls.bot.get_response(message)
-        return resp
+        return resp 
