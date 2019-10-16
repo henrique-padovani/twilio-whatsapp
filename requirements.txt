@@ -4,3 +4,4 @@ flask_restful
 psycopg2
 uuid
 chatterbot-corpus
+twilio
