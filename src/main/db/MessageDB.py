@@ -31,7 +31,7 @@ class MessageDB:
     
     def tableExists(self, menagerDB):
         sql = '''
-            select * from information_schema.tables where table_name='{}'"
+            select * from information_schema.tables where table_name='{}'
         '''
         menagerDB.cursor.execute(sql.format('MESSAGE'))
         return bool(menagerDB.cursor.rowcount)
