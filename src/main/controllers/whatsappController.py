@@ -5,7 +5,7 @@ from src.main.db.MessageDB import MessageDB
 class WhatsApp(Resource):
     def post(self):
         message = request.form.to_dict()
-        print("request.form: " + str(request.form))
+        print(message['Body'])
         MessageDB.saveMessage(str(message))
         return jsonify("Rodou...")
 
