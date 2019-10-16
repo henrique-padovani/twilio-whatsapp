@@ -5,13 +5,13 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 
 
 class ChatBot:
-    bot = None
+    chatbot = None
 
     @classmethod
     def getChatBot(cls, chatbotName):
-        cls.bot = ChatBot()
+        cls.chatbot = ChatBot()
         # Create a new trainer for the chatbot
-        trainer = ChatterBotCorpusTrainer(cls.bot)
+        trainer = ChatterBotCorpusTrainer(cls.chatbot)
         # # Train the chatbot based on the english corpus
         trainer.train("chatterbot.corpus.english")
         # # Train based on english greetings corpus
@@ -29,5 +29,5 @@ class ChatBot:
     
     @classmethod
     def getBotResponse(cls, message):
-        resp = cls.bot.get_response(message)
+        resp = cls.chatbot.get_response(message)
         return resp 

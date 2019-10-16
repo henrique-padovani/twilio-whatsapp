@@ -1,7 +1,9 @@
-chatterbot
+ChatterBot==1.0.5
+chatterbot-corpus==1.2.0
+SQLAlchemy==1.2.19
 flask
 flask_restful
 psycopg2
 uuid
-chatterbot-corpus
 twilio
+nose
