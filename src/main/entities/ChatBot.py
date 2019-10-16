@@ -9,7 +9,7 @@ class ChatBot:
 
     @classmethod
     def getChatBot(cls, chatbotName):
-        cls.bot = ChatBot('chatbotName')
+        cls.bot = ChatBot()
         # Create a new trainer for the chatbot
         trainer = ChatterBotCorpusTrainer(bot)
         # # Train the chatbot based on the english corpus
