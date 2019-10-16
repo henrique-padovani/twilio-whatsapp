@@ -21,5 +21,5 @@ class WhatsApp(Resource):
         client.messages.create(body=msg, from_=mybot_whats, to=to)
 
         MessageDB.saveMessage(str(message))
-        return jsonify("Rodou...")
+        return jsonify("Rodou...") 
 
