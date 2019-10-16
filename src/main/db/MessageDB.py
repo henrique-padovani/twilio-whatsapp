@@ -15,6 +15,7 @@ class MessageDB:
         return
 
     def createTable(self, menagerDB):
+        self.deleteTable(self, menagerDB)
         sql = '''
                 CREATE TABLE MESSAGE (
                     ID UUID PRIMARY KEY,
