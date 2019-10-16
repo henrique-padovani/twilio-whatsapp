@@ -4,7 +4,7 @@ from os import environ
 
 from src.app import getApp
 
-from src.main.entities.ChatBot import getChatBot
+from src.main.entities.ChatBot import ChatBot
 from src.main.db.pgAdmin import MenagerDB
 from src.main.db.MessageDB import MessageDB
 
@@ -14,7 +14,7 @@ print("GLOBAL")
 def setUp():
     print("\n\n\n INICIO")
 
-    # chatbot = getChatBot('Teste')
+    ChatBot.getChatBot('Teste')
     menagerDB = MenagerDB('twiliodatabase')
 
     messageDB = MessageDB(menagerDB)
