@@ -13,5 +13,5 @@ class MenagerDB:
         pw = '77daa1d66905f7d02832b39dfb4bc9896e4fb9cd26bf314bcb4d869b91f78101'
         DATABASE_URL = os.environ['DATABASE_URL']
         self.conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-        self.cursor = self.db.cursor()
+        self.cursor = self.conn.cursor()
         return
